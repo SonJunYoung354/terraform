@@ -15,4 +15,3 @@ resource "aws_nat_gateway" "Son_ng" {
     aws_internet_gateway.Son_ig
   ]
 }
-
