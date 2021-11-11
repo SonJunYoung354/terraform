@@ -17,6 +17,13 @@ data "aws_ami" "Son_ami" {
 */
 
 resource "aws_instance" "Son_web" {
+    ## ami code
+    ## instance_type
+    ## "aws_key_pair" "Son_key" = key name
+    ## vpc_security_group id 
+    ## private_ip
+    ## user_data = file
+    ## subnet public a id 
     ami = "ami-04e8dfc09b22389ad"
     instance_type = "t2.micro"
     key_name      = "Son2-key"
@@ -25,9 +32,24 @@ resource "aws_instance" "Son_web" {
     private_ip             = "10.0.0.11"
     user_data              = file("../../intall.sh")
     subnet_id               = aws_subnet.Son_puba.id
-  
+    tags = {
+      "Name" = "Son_terrafrom_web"
+    }
 }
 
+
+## user_data 
+/*user_data = <<-EOF
+                #!/bin/bash
+                sudo su -
+                yum install -y httpd
+                echo "SDKIM-Terraform-1" >> /var/www/html/index.html
+                systemctl start httpd
+                EOF
+}
+*/
+
+## add  public ip 
 resource "aws_eip" "Son_eip" {
   vpc = true
   instance = aws_instance.Son_web.id
