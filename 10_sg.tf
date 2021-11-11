@@ -46,9 +46,9 @@ resource "aws_security_group" "Son_sg" {
         },
         {
           description = "allow icmp"
-          from_port   = 3389
-          to_port     = 3389
-          protocol    = "tcp"
+          from_port   = 0
+          to_port     = 0
+          protocol    = "icmp"
           cidr_blocks = ["0.0.0.0/0"]
           ipv6_cidr_blocks = ["::/0"]
           prefix_list_ids = null
