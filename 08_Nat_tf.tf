@@ -1,4 +1,4 @@
-## NAT table
+## NAT route_table
 resource "aws_route_table" "Son_router_nt" {
     vpc_id = aws_vpc.Son-vpc.id
 

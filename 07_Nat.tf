@@ -1,3 +1,4 @@
+## add nat gateway
 resource "aws_eip" "Son_eip_ng" {
   vpc = true
 }
