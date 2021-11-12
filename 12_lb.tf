@@ -11,3 +11,8 @@ resource "aws_lb" "Son_lb" {
     "Name" = "Son_web_lb"
   }
 }
+
+## add output dns.name
+output "al_dns" {
+  value = aws_lb.Son_lb.dns_name
+}
