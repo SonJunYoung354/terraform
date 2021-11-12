@@ -61,3 +61,8 @@ resource "aws_eip" "Son_eip" {
       Name = "Son_web"
   }
 }
+# add ouput public ip
+output "public_ip" {
+  value = aws_instance.Son_web.public_ip
+
+}
