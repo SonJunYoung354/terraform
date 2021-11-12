@@ -38,3 +38,26 @@ resource "aws_subnet" "Son_pric" {
     "Name" = "Son-pric"
   }
 }
+
+
+## a db subnet
+
+resource "aws_subnet" "Son_pridba" {
+    vpc_id = aws_vpc.Son-vpc.id
+    cidr_block = "10.0.4.0/24"
+    availability_zone = "ap-northeast-2a"
+  tags = {
+    "Name" = "Son-pridba"
+  }
+
+}
+
+## c db subnet
+resource "aws_subnet" "Son_pridbc" {
+    vpc_id = aws_vpc.Son-vpc.id
+    cidr_block = "10.0.5.0/24"
+    availability_zone = "ap-northeast-2c"
+  tags = {
+    "Name" = "Son-pridbc"
+  }
+}
