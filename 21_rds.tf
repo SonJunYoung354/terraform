@@ -1,5 +1,6 @@
 ##
-##
+##  Creative rds 
+##  engine mysql 
 resource "aws_db_instance" "Son_mysql" {
   allocated_storage      = 20
   storage_type           = "gp2"
@@ -15,6 +16,17 @@ resource "aws_db_instance" "Son_mysql" {
   db_subnet_group_name   = aws_db_subnet_group.Son_dbsn.id
   vpc_security_group_ids = [aws_security_group.Son_sg.id]
   skip_final_snapshot    = true
+  ## add a role
+  /*monitoring_role_arn = "Son_role.arn"
+  ## log Property type set
+  enabled_cloudwatch_logs_exports = [
+    "error",
+    "audit",
+    "general",
+    "slowquery"
+  ]
+  ##enabled_cloudwatch_logs_exports = ["error,audit,general,slowquery"]
+  */
 
   tags = {
     "Nmae" = "Son_mydb"
