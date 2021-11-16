@@ -115,7 +115,7 @@ variable "HTTP" {
 }
 variable "SSH" {
     type = number
-    default = 80 
+    default = 22 
 }
 
 
