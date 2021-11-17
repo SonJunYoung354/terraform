@@ -1,8 +1,9 @@
-
 ## add security_group
 ##prefix_list_ids = null
 ##security_groups = null
 ##self = null
+## count 만큼 실행 
+# count = length(var.allow_mode)
 resource "aws_security_group" "Son_sg" {
   name        = "allow Basic"
   description = "Allow HTTP,SSH,SQL,ICMP"
@@ -46,7 +47,7 @@ resource "aws_security_group" "Son_sg" {
       description      = var.allow_icmp
       from_port        = var.port
       to_port          = var.port
-      protocol         = var.protocol_tcmp
+      protocol         = var.protocol_icmp
       cidr_blocks      = [var.cidr_route]
       ipv6_cidr_blocks = [var.ipv6]
       prefix_list_ids  = null
@@ -104,7 +105,7 @@ resource "aws_instance" "Son_web" {
   instance_type          = var.instance_type
   key_name               = var.key
   vpc_security_group_ids = [aws_security_group.Son_sg.id]
-  availability_zone      = var.region
+  availability_zone      = "${var.region}${var.ava[0]}"
   private_ip             = var.instance_pri
   user_data              = file("../../intall.sh")
   subnet_id              = aws_subnet.Son_pub[0].id
